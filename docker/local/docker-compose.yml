@@ -1,0 +1,18 @@
+version: '3'
+
+volumes:
+  person_api_postgres_data:
+    driver: local
+
+services:
+  postgres_for_person_api:
+    container_name: person_api_postgres_container
+    image: postgres:latest
+    volumes:
+      - person_api_postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: person_api_db
+      POSTGRES_USER: person
+      POSTGRES_PASSWORD: person
+    ports:
+      - "5432:5432"
